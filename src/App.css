@@ -8,6 +8,14 @@ p, h4, h3, h2, h1, a {
   color: #FCF8EE;
 } 
 
+a:hover{
+  color:#1B171E;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
 .ui-header > h1 {
   margin-top: auto;
   margin-bottom: auto;
@@ -71,12 +79,14 @@ p, h4, h3, h2, h1, a {
   margin-right: auto;
   margin-top: 2em;
   justify-content: center;
+  /* background-color: yellow; */
 }
 
 .add-players{
   width: 30%;
   margin-right: 5em;
   /* background-color: blue; */
+
 }
 
 .add-enemies{
@@ -87,10 +97,11 @@ p, h4, h3, h2, h1, a {
 .add-enemies > button, .add-players > button{
   width: 57px;
   height: 57px;
+  text-align: center; 
+  line-height: 65px;
   border: none;
   border-radius: 15px;
   background-color: #3DBD00;
-  /* margin-left: 1em; */
   font-size: 50px;
   color:#1B171E
 }
@@ -101,36 +112,155 @@ p, h4, h3, h2, h1, a {
 
 .added-creature{
   display: flex;
+  flex-wrap: wrap;
+  height:70px;
   justify-content: space-around;
   border: 3px solid #3DBD00;
   border-radius: 15px;
   margin-bottom: 2em;
+  padding-top: auto;
+  padding-bottom: auto;
 }
 
 .added-creature > button{
   font-size: 30px;
   width: 40px;
   height: 40px;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 0.3rem;
   background-color: #1B171E;
   color: #FCF8EE;
   border: none;
-}
-
-.added-creature > h4{
-  margin-top: 24px
+  border-radius: 15px;
 }
 
 #options-button{
-  margin-bottom: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+  line-height: 1px;
+  margin-top: 45%;
+  font-size: larger;
+  letter-spacing: 3px;
+  background-color: #1B171E;
+  color:#FCF8EE;
+  border: none;
 }
+
+#options-button:hover{
+  color:#37ad00
+}
+
+#options-button:focus{
+  outline-offset: none;
+  box-shadow: none;
+}
+
+
+#options-button::after{
+  content: none;
+}
+
+.added-creature > h4{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.added-creature > h2{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 
 .added-creature > button:hover{
   color: #3DBD00;
   background-color: #1B171E;
 }
 
-button:hover{
+#add-button{
+  height:70px;
+  width:70px;
+  line-height: 1px;
+  border-radius: 15%;
+  font-size: 50px;
+  letter-spacing: 3px;
+  background-color: #3DBD00;
+  color:#1B171E;
+  border: none;
+}
+
+#add-button:focus{
+  outline-offset: none;
+  box-shadow: none;
+}
+
+#add-button::after{
+  content: none;
+}
+
+#add-button:hover{
   background-color: #37ad00;
+}
+
+.how-to-use{
+  display: flex;
+  width: 45%;
+  margin: 5% auto 5% auto;
+  /* background-color: gray; */
+
+}
+
+.howto-text{
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 2em;
+  text-indent: 50px;
+}
+
+.howto-text > h1{
+  margin-bottom: 2em;
+  text-indent: 0px;
+  text-align: center;
+}
+
+.howto-text > a{
+  text-align: center;
+  margin-top: 2em;
+  margin: 5% auto 5% 40%;
+}
+
+.howto-text > a:hover{
+  text-decoration: none;
+  color:#37ad00;
+}
+
+.auth{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 5% auto 5% auto;
+  border:#3DBD00 3px solid;
+  border-radius: 15%;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.auth > h4{
+  text-align: center;
+}
+
+.auth > input{
+  width: 40%;
+  margin: 5% auto 0 auto;
+}
+
+.auth-buttons{
+  display: flex;
+  flex-direction: row;
+  margin: 5% auto 0 auto;
+}
+
+#login-button{
+  margin-left: 3px;
+  margin-right: 3px;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../App.css';
 
 function Header() {
@@ -6,7 +7,7 @@ function Header() {
         <div className='ui-header'>
             <h1>Battle Tracker</h1>
             <div className='direc-links'>
-                <a href='howToUse.html'>How to Use</a>
+                <Link to="/how-to-use">How to Use</Link>
                 <p>|</p>
                 <a href='https://adavis0010.github.io/' target='_blank' rel='noreferrer'>More by Me</a>
             </div>
@@ -14,4 +15,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default (Header);
