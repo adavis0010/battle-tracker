@@ -72,6 +72,9 @@ a:hover{
   font-weight: bold;
 }
 
+.round-counter > button:hover{
+  background-color: #2b8800;
+}
 
 .add-creature{
   display: flex;
@@ -114,7 +117,7 @@ a:hover{
   display: flex;
   flex-wrap: wrap;
   height:70px;
-  justify-content: space-around;
+  justify-content: space-evenly;
   border: 3px solid #3DBD00;
   border-radius: 15px;
   margin-bottom: 2em;
@@ -146,7 +149,7 @@ a:hover{
 }
 
 #options-button:hover{
-  color:#37ad00
+  color:#3DBD00
 }
 
 #options-button:focus{
@@ -197,7 +200,7 @@ a:hover{
 }
 
 #add-button:hover{
-  background-color: #37ad00;
+  background-color: #2b8800;
 }
 
 .how-to-use{
@@ -230,7 +233,7 @@ a:hover{
 
 .howto-text > a:hover{
   text-decoration: none;
-  color:#37ad00;
+  color:#2b8800;
 }
 
 #email{

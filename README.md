@@ -1,5 +1,5 @@
 # Battle Tracker
-Battle tracker is an application that allows that allows the GM for table-top RPGs to better manage information during an in-game battle. It was developed specifically for Dungeons and Dragons, but may be useful for other games, too. It allows the DM to keep track of Hit Points for all creatures in a battle, status effects, and number of rounds.
+Battle tracker is an application that allows that allows for the GM in table-top RPGs to better manage information during an in-game battle. It was developed specifically for Dungeons and Dragons, but may be useful for other games, too. It allows the DM to keep track of Hit Points for all creatures in a battle, status effects, and number of rounds.
 
 ## Usage
 ### Adding Creatures

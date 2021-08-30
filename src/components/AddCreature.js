@@ -3,6 +3,7 @@ import '../App.css';
 import Dropdown from "react-bootstrap/Dropdown";
 
 function AddCreature() {
+    
     return (
         <div className='add-creature'>
             <div className='add-players'>
@@ -16,7 +17,6 @@ function AddCreature() {
                             <Dropdown.Toggle varient='success' id='options-button'>
                                 ...
                             </Dropdown.Toggle>
-
                             <Dropdown.Menu className='options-button'>
                                 <Dropdown.Item href='#/action-1'>
                                     Add Status Effect
@@ -38,7 +38,8 @@ function AddCreature() {
                                 </Dropdown.Item>
                                 <Dropdown.Item href='#/action-2'>
                                     Add from saved custom creatures
-                                </Dropdown.Item>                            <Dropdown.Item href='#/action-3'>
+                                </Dropdown.Item>                            
+                                <Dropdown.Item href='#/action-3'>
                                     Add new custom creature
                                 </Dropdown.Item>
                             </Dropdown.Menu>
