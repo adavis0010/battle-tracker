@@ -233,6 +233,14 @@ a:hover{
   color:#37ad00;
 }
 
+#email{
+  text-decoration: underline;
+}
+
+#email:hover{
+  color:#3DBD00
+}
+
 .auth{
   display: flex;
   flex-direction: column;
