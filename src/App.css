@@ -203,6 +203,30 @@ a:hover{
   background-color: #2b8800;
 }
 
+.reset{
+  display:flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  margin-top: 6em;
+}
+
+.reset-button{
+  width: 148px;
+  height: 57px;
+  color: #1B171E;
+  background-color: #3DBD00;
+  border: none;
+  border-radius: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.reset-button:hover{
+  background-color: #2b8800;
+}
+
 .how-to-use{
   display: flex;
   width: 45%;

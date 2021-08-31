@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import '../App.css';
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from 'axios';
-import { placeholder } from "@babel/types";
 
 function AddCreature() {
     const [state, setState] = useState({
         creatures: [],
-        placeholder: false,
+        container: false,
         search: false,
         custom: false,
         input: '',
@@ -21,40 +20,69 @@ function AddCreature() {
             }))
         })
     }, []);
-    
+
+    //-------------------------------------debugging----------------------------------------
     let mappedCreatures = state.creatures.map((creature, index)=> { return creature.name });
     console.log(state.input)
     console.log(state.foundCreature)
+    //--------------------------------------------------------------------------------------
+
     let players = [];
     let enemies = [];
-    let mappedPlayers =  players.map((player,index)=><div key={index}>
-        <div className='added-creature'>
-                        <h4>{player.name}</h4>
-                        <button id='plus-button'>+</button>
-                        <h2>{player.hit_points} HP</h2>
-                        <button id='minus-button'>-</button>
-                        <Dropdown>
-                            <Dropdown.Toggle varient='success' id='options-button'>
-                                ...
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu className='options-button'>
-                                <Dropdown.Item href='#/action-1'>
-                                    Add Status Effect
-                                </Dropdown.Item>
-                                <Dropdown.Item href='#/action-2'>
-                                    Delete
-                                </Dropdown.Item>                            
-                            </Dropdown.Menu>
-                         </Dropdown>
-                    </div>
-    </div>)
-    let mappedEnemies = enemies.map((enemies,index)=><div key={index}>
-        
-    </div>)
+
+    // PLAYER CONTENT
+    let mappedPlayers =  players.map((player,index)=>
+        <div key={index}>
+            <div className='added-creature'>
+                <h4>{player.name}</h4>
+                <button id='plus-button'>+</button>
+                <h2>{player.hit_points} HP</h2>
+                <button id='minus-button'>-</button>
+                <Dropdown>
+                    <Dropdown.Toggle varient='success' id='options-button'>
+                        ...
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className='options-button'>
+                        <Dropdown.Item href='#/action-1'>
+                            Add Status Effect
+                        </Dropdown.Item>
+                        <Dropdown.Item href='#/action-2'>
+                            Delete
+                        </Dropdown.Item>                            
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+        </div>)
+
+    //ENEMIES CONTENT
+    let mappedEnemies = enemies.map((enemies,index)=>
+        <div key={index}>
+            <div className='added-creature'>
+                <h4>{enemies.name}</h4>
+                <button id='plus-button'>+</button>
+                <h2>{enemies.hit_points} HP</h2>
+                <button id='minus-button'>-</button>
+                <Dropdown>
+                    <Dropdown.Toggle varient='success' id='options-button'>
+                        ...
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className='options-button'>
+                        <Dropdown.Item href='#/action-1'>
+                            Add Status Effect
+                        </Dropdown.Item>
+                        <Dropdown.Item href='#/action-2'>
+                            Delete
+                        </Dropdown.Item>                            
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+        </div>)
+
+    //ADD BUTTON DROPDOWN LOGIC
     let display;
     if (state.search&&!state.custom){
         display=<div>
-            <input placeholder='api' onChange={e => setState(state => ({
+            <input container='Monster Manual' onChange={e => setState(state => ({
                 ...state,
                 input: e.target.value
                 }))}>           
@@ -64,20 +92,32 @@ function AddCreature() {
                 foundCreature: response.data,
                 search: false,
                 }))
-            })}}>Search</button></div>
+            })}}>Search</button>
+        </div>
     } else if (state.custom&&!state.search){
-        display=<div>custom</div>
+        display=<div>
+        <input container='Custom Creature' onChange={e => setState(state => ({
+                ...state,
+                input: e.target.value
+                }))}>           
+            </input>
+        <button onClick={()=>(response=>{setState(state => ({
+                ...state,
+                foundCreature: response.data,
+                custom: false,
+                }))
+            })}>Search</button>
+        </div>
     }
+
     return (
         <div className='add-creature'>
+            {/* PLAYER COLUMN CONDITIONAL RENDERING */}
             <div className='add-players'>
                 <h1>Players</h1>
-                {state.placeholder&&<div className='added-creature'>
+                {state.container&&<div className='added-creature'>
                     {display}
                 </div>}
-                <div>
-                    {/* {mappedCreatures} */}
-                </div>
                     <div className='add-button-holder'>
                     <Dropdown>
                             <Dropdown.Toggle varient='success' id='add-button'>
@@ -88,7 +128,7 @@ function AddCreature() {
                                 <div onClick={()=>setState(state => ({
                                     ...state,
                                     search: !state.search,
-                                    placeholder:true,
+                                    container:true,
                                     custom: false,
                                 }))}>
                                     Search Monster Manual
@@ -103,7 +143,7 @@ function AddCreature() {
                                 <div onClick={()=>setState(state => ({
                                     ...state,
                                     search: false,
-                                    placeholder:true,
+                                    container:true,
                                     custom: !state.custom,
                                 }))}>
                                     New custom creature
@@ -113,6 +153,8 @@ function AddCreature() {
                          </Dropdown>
                     </div>
             </div>
+
+            {/*ENEMIES COLUMN CONDITIONAL RENDERING*/}
             <div className='add-enemies'>
                 <h1>Enemies</h1>
                 <div className='added-creature'>
