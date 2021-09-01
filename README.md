@@ -16,3 +16,8 @@ Battle Tracker is currently in active developement. Future features include the 
 
 ## Contributing
 Batttle Tracker is currently a closed-developement application. Please contact me at sadavis0010@gmail.com for inquiries.
+
+
+
+
+Many thanks to my friend [Joely Vernier](https://github.com/jorovernier) for her help on this project.
