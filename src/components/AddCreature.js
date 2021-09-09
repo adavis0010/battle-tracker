@@ -94,15 +94,14 @@ let mappedEnemies = this.state.enemies.map((enemies,index)=>
             </div>
         </div>)
 
-//---------------------------------------------------DISPLAY------------------------------------------------------------
+//--------------------------------------------------------DISPLAY------------------------------------------------------------
 let lowercase = this.state.input.toLowerCase()
-
 let playerDisplay;
 
 if (this.state.search&&!this.state.custom){
     playerDisplay=
     
-//////API INPUT//////
+//////PLAYER API INPUT//////
         
         <div className='mm-search-state'>
             <input placeholder='Monster Manual' onChange={e => this.setState({
@@ -120,7 +119,7 @@ if (this.state.search&&!this.state.custom){
             }}>Search</button>
         </div>
 
-                                                //////CUSTOM INPUT//////
+//////PLAYER CUSTOM INPUT(wip)//////
 
     } else if (this.state.custom&&!this.state.search){
         playerDisplay=<div className='custom-search-state'>
@@ -136,49 +135,10 @@ if (this.state.search&&!this.state.custom){
         </div>
     }
 
+//////ENEMY API INPUT//////
+    let enemyDisplay;
     if (this.state.search&&!this.state.custom){
-    playerDisplay=
-    
-//////API INPUT//////
-        
-        <div className='mm-search-state'>
-            <input placeholder='Monster Manual' onChange={e => this.setState({
-                input: e.target.value
-                })
-                }>
-            </input>
-        <button onClick={()=>{axios.get(`https://www.dnd5eapi.co/api/monsters/${lowercase}`).then(response=> {this.setState({
-                customName: response.data.name,
-                customHP: response.data.hit_points,
-                search: false,
-                container: false,
-                }, this.playerValues);
-            });
-            }}>Search</button>
-        </div>
-
-                                                //////CUSTOM INPUT//////
-
-    } else if (this.state.custom&&!this.state.search){
-        playerDisplay=<div className='custom-search-state'>
-        <input onChange={e => this.setState({
-                input: e.target.value
-                })}>           
-            </input>
-        <button onClick={()=>(response=>{this.setState({
-                foundCreature: response.data,
-                custom: false,
-                })
-            })}>Add</button>
-        </div>
-    }
-
-let enemyDisplay;
-if (this.state.search&&!this.state.custom){
-        enemyDisplay=
-        
-    //////API INPUT//////
-            
+        enemyDisplay=          
             <div className='mm-search-state'>
                 <input placeholder='Monster Manual' onChange={e => this.setState({
                     input: e.target.value
@@ -195,8 +155,7 @@ if (this.state.search&&!this.state.custom){
                 }}>Search</button>
             </div>
     
-                                                    //////CUSTOM INPUT//////
-    
+//////ENEMY CUSTOM INPUT(wip)//////  
         } else if (this.state.custom&&!this.state.search){
             playerDisplay=<div className='custom-search-state'>
             <input onChange={e => this.setState({
@@ -211,7 +170,6 @@ if (this.state.search&&!this.state.custom){
             </div>
         }
     
-
     return (
         <div className='add-creature'>
 {/* --------------------------------------PLAYER COLUMN CONDITIONAL RENDERING-------------------------------------------- */}
