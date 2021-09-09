@@ -1,7 +1,11 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+
+
 
 function Login() {
+    const [] = useState([])
+
     return(
         <div className='auth'>
             <h4>Log In</h4>
@@ -16,15 +20,12 @@ function Login() {
                 placeholder='Password'
             />
             <div className= 'auth-buttons'>
-                <button id='login-button'>
+                <button>
                     Log In
                 </button>
-                <button id='signup-button' href="/">
+                <button>
                     Sign Up
                 </button>
-            </div>
-            <div className= 'debug-homepage'>
-                <Link to="/">(debug) homepage</Link>
             </div>
         </div>
     )

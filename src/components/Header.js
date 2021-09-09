@@ -5,7 +5,7 @@ import '../App.css';
 function Header() {
     return (
         <div className='ui-header'>
-            <h1>Battle Tracker</h1>
+            <Link to="/" id='title'>Battle Tracker</Link>
             <div className='direc-links'>
                 <Link to="/how-to-use">How to Use</Link>
                 <p>|</p>

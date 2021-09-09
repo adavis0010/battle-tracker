@@ -16,12 +16,18 @@ a:hover{
   outline: 0 !important;
 }
 
-.ui-header > h1 {
+#title {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 1em;
   letter-spacing: 3px;
   font-family: 'Kanit', sans-serif;
+  font-size: 2.5em
+}
+
+#title:hover{
+  color: #FCF8EE;
+  text-decoration: none;
 }
 
 .direc-links > a, p {
@@ -178,6 +184,30 @@ a:hover{
   background-color: #1B171E;
 }
 
+.mm-search-state, .custom-search-state {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.mm-search-state > input {
+  margin-right: 1.5em;
+}
+
+.mm-search-state > button, .custom-search-state > button {
+  line-height: 1px;
+  border-radius: 15%;
+  background-color: #3DBD00;
+  color:#1B171E;
+  border: none;
+  font-weight: bold;
+}
+
+.mm-search-state > button:hover, .custom-search-state > button:hover{
+  background-color: #2b8800;
+}
+
 #add-button{
   height:70px;
   width:70px;
@@ -201,6 +231,11 @@ a:hover{
 
 #add-button:hover{
   background-color: #2b8800;
+}
+
+.add-button-holder{
+  display: flex;
+  justify-content: center;
 }
 
 .reset{
@@ -274,7 +309,7 @@ a:hover{
   width: 40%;
   margin: 5% auto 5% auto;
   border:#3DBD00 3px solid;
-  border-radius: 15%;
+  border-radius: 7%;
   justify-content: center;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -285,17 +320,28 @@ a:hover{
 }
 
 .auth > input{
-  width: 40%;
+  width: 203px;
   margin: 5% auto 0 auto;
 }
 
 .auth-buttons{
   display: flex;
   flex-direction: row;
-  margin: 5% auto 0 auto;
+  justify-content: center;
 }
 
-#login-button{
-  margin-left: 3px;
-  margin-right: 3px;
+.auth-buttons > button{
+  width: 100px;
+  height: 50px;
+  color: #1B171E;
+  background-color: #3DBD00;
+  border: none;
+  border-radius: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  /* font-size: medium; */
+  font-weight: bold;
+  margin: 30px 3px 0 3px;
 }
+
+/* #login-button{
+} */
