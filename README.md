@@ -8,7 +8,7 @@ To add a creature to the board, click the add button under the approriate column
 ### Reset Button
 Clicking the reset button will delete all creatures from the board.
 
-##Technologies
+## Technologies
 Battle tracker is built using React and react-bootstrap.
 
 ## Roadmap
