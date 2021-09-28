@@ -12,10 +12,10 @@ Selecting the options button on any added creature will allow you to either dele
 Clicking the reset button will delete all creatures from the board.
 
 ##Technologies
-Battle tracker is built using React.
+Battle tracker is built using React, react-bootstrap, and EasyBase
 
 ## Roadmap
-Battle Tracker is currently in active developement. Future features include the ability to change the order of creatures in the list to track initiative order, a save and load encounter functionality, and a dropdown that displays the full stats of creatures added from the Monster Manual.
+Battle Tracker is currently in active developement. Future features include a log in feature, the ability to change the order of creatures in the list to track initiative order, a save and load encounter functionality, and a dropdown that displays the full stats of creatures added from the Monster Manual.
 
 ## Contributing
 Batttle Tracker is currently a closed-developement application. Please contact me at sadavis0010@gmail.com for inquiries.
@@ -23,4 +23,4 @@ Batttle Tracker is currently a closed-developement application. Please contact m
 
 
 
-Many thanks to my friend [Joely Vernier](https://github.com/jorovernier) for her help on this project.
+Many thanks to my friend [Joely Vernier](https://github.com/jorovernier) for her help and guidance on this project.

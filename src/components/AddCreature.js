@@ -16,7 +16,9 @@ class AddCreature extends Component {
             customHP: '',
             players: [],
             enemies: [],
-            whatRow: ''
+            whatRow: '',
+            nameInput: '',
+            hpInput: ''
         }
     }
 
@@ -44,59 +46,68 @@ class AddCreature extends Component {
         });
     }
 
+    subtract(num){
+        return num = num - 1;
+    }
+
     render(){
 
     // ------------------------------------------------PLAYER CONTENT--------------------------------------------------------
-    let mappedPlayers =  this.state.players.map((player,index)=>
-    <div key={index}>
+    let mappedPlayers =  this.state.players.map((player,index, array)=>
+    {
+       return (<div key={index}>
             <div className='added-creature'>
                 <h4>{player.name}</h4>
-                <button id='plus-button'>+</button>
                 <h2>{player.hp} HP</h2>
-                <button id='minus-button'>-</button>
                 <Dropdown>
                     <Dropdown.Toggle varient='success' id='options-button'>
                         ...
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='options-button'>
-                        <Dropdown.Item>
+                        {/* <Dropdown.Item>
                             <PopUp/>
-                        </Dropdown.Item>
-                        <Dropdown.Item>
+                        </Dropdown.Item> */}
+                    <Dropdown.Item onClick={()=>{
+                            array.splice(index,1);
+                            this.forceUpdate();
+                        }}>
                             Delete
-                        </Dropdown.Item>                            
+                        </Dropdown.Item>                        
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-        </div>)
+        </div>)})
 
 //------------------------------------------------ENEMIES CONTENT--------------------------------------------------------
-let mappedEnemies = this.state.enemies.map((enemies,index)=>
-<div key={index}>
+let mappedEnemies = this.state.enemies.map((enemy,index, array)=>
+{
+    return (<div key={index}>
             <div className='added-creature'>
-                <h4>{enemies.name}</h4>
-                <button id='plus-button'>+</button>
-                <h2>{enemies.hp} HP</h2>
-                <button id='minus-button'>-</button>
+                <h4>{enemy.name}</h4>
+                <h2>{enemy.hp} HP</h2>
                 <Dropdown>
                     <Dropdown.Toggle varient='success' id='options-button'>
                         ...
                     </Dropdown.Toggle>
                     <Dropdown.Menu className='options-button'>
-                        <Dropdown.Item href='#/action-1'>
-                            Add Status Effect
-                        </Dropdown.Item>
-                        <Dropdown.Item href='#/action-2'>
+                        {/* <Dropdown.Item href='#/action-1'>
+                            Add Status Effect */}
+                        {/* </Dropdown.Item> */}
+                        <Dropdown.Item onClick={()=>{
+                            array.splice(index,1);
+                            this.forceUpdate();
+                        }}>
                             Delete
                         </Dropdown.Item>                            
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-        </div>)
+        </div>)})
 
 //--------------------------------------------------------DISPLAY------------------------------------------------------------
 let lowercase = this.state.input.toLowerCase()
 let playerDisplay;
+let enemyDisplay;
 
 if (this.state.search&&!this.state.custom){
     playerDisplay=
@@ -106,8 +117,7 @@ if (this.state.search&&!this.state.custom){
         <div className='mm-search-state'>
             <input placeholder='Monster Manual' onChange={e => this.setState({
                 input: e.target.value
-                })
-                }>
+                })}>
             </input>
         <button onClick={()=>{axios.get(`https://www.dnd5eapi.co/api/monsters/${lowercase}`).then(response=> {this.setState({
                 customName: response.data.name,
@@ -119,31 +129,45 @@ if (this.state.search&&!this.state.custom){
             }}>Search</button>
         </div>
 
-//////PLAYER CUSTOM INPUT(wip)//////
+//////ENEMIES CUSTOM INPUT//////
 
     } else if (this.state.custom&&!this.state.search){
-        playerDisplay=<div className='custom-search-state'>
-        <input onChange={e => this.setState({
-                input: e.target.value
+        enemyDisplay=
+        <div className='custom-search-state'>
+            <div className='cus-name'>
+                <h4>Name</h4>
+                <input onChange={e => this.setState({
+                    nameInput: e.target.value
                 })}>           
-            </input>
-        <button onClick={()=>(response=>{this.setState({
-                foundCreature: response.data,
-                custom: false,
-                })
-            })}>Add</button>
+                </input>
+            </div>
+            <div className='cus-hp'>
+                <h4>HP</h4>
+                <input onChange={e => this.setState({
+                    hpInput: e.target.value
+                })}>           
+                </input>
+            </div>
+            <div className='cus-add'>
+                <button onClick={()=>{this.setState({
+                customName: this.state.nameInput,
+                customHP: this.state.hpInput,
+                search: false,
+                container: false,
+                }, this.enemyValues);
+            }}>Add</button>
+
+            </div>        
         </div>
     }
 
 //////ENEMY API INPUT//////
-    let enemyDisplay;
     if (this.state.search&&!this.state.custom){
         enemyDisplay=          
             <div className='mm-search-state'>
                 <input placeholder='Monster Manual' onChange={e => this.setState({
                     input: e.target.value
-                    })
-                    }>
+                    })}>
                 </input>
             <button onClick={()=>{axios.get(`https://www.dnd5eapi.co/api/monsters/${lowercase}`).then(response=> {this.setState({
                     customName: response.data.name,
@@ -155,27 +179,43 @@ if (this.state.search&&!this.state.custom){
                 }}>Search</button>
             </div>
     
-//////ENEMY CUSTOM INPUT(wip)//////  
+//////PLAYER CUSTOM INPUT//////  
         } else if (this.state.custom&&!this.state.search){
-            playerDisplay=<div className='custom-search-state'>
-            <input onChange={e => this.setState({
-                    input: e.target.value
-                    })}>           
+            playerDisplay=
+            <div className='custom-search-state'>
+             <div className='cus-name'>
+                <h4>Name</h4>
+                <input onChange={e => this.setState({
+                    nameInput: e.target.value
+                })}>           
                 </input>
-            <button onClick={()=>(response=>{this.setState({
-                    foundCreature: response.data,
-                    custom: false,
-                    })
-                })}>Add</button>
             </div>
-        }
+            <div className='cus-hp'>
+                <h4>HP</h4>
+                <input onChange={e => this.setState({
+                    hpInput: e.target.value
+                })}>           
+                </input>
+            </div>
+            <div className='cus-add'>
+                <button onClick={()=>{this.setState({
+                customName: this.state.nameInput,
+                customHP: this.state.hpInput,
+                search: false,
+                container: false,
+                }, this.playerValues);
+            }}>Add</button>
+
+            </div> 
+        </div>
+    }
     
     return (
         <div className='add-creature'>
 {/* --------------------------------------PLAYER COLUMN CONDITIONAL RENDERING-------------------------------------------- */}
             <div className='add-players'>
                 <h1>Players</h1>
-                {this.state.container&&this.state.whatRow ==='players' ? <div className='added-creature'>
+                {this.state.container&&this.state.whatRow === 'players' ? <div className='added-creature'>
                     {playerDisplay}                  
                 </div>:''}
                     {this.state.players.length>0&&<div>
@@ -190,18 +230,18 @@ if (this.state.search&&!this.state.custom){
                                 <Dropdown.Item as='button'>
                                 <div onClick={()=>this.setState({
                                     search: !this.state.search,
-                                    container:true,
+                                    container: true,
                                     custom: false,
                                     whatRow: 'players'
                                 })}>
                                     Search Monster Manual
                                 </div>
                                 </Dropdown.Item>
-                                <Dropdown.Item as='button'>
+                                {/* <Dropdown.Item as='button'>
                                 <div>
                                     Search saved creatures
                                 </div>
-                                </Dropdown.Item>                            
+                                </Dropdown.Item>                             */}
                                 <Dropdown.Item as='button'>
                                 <div onClick={()=>this.setState({
                                     search: false,
@@ -242,15 +282,15 @@ if (this.state.search&&!this.state.custom){
                                 Search Monster Manual
                             </div>
                             </Dropdown.Item>
-                            <Dropdown.Item as='button'>
+                            {/* <Dropdown.Item as='button'>
                             <div>
                                 Search saved creatures
                             </div>
-                            </Dropdown.Item>                            
+                            </Dropdown.Item>                             */}
                             <Dropdown.Item as='button'>
                             <div onClick={()=>this.setState({
                                 search: false,
-                                container:true,
+                                container: true,
                                 custom: !this.state.custom,
                                 whatRow: 'enemies',
                             })}>

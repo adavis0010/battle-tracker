@@ -1,9 +1,13 @@
 import React from 'react';
 
 function ResetButton(){
+    const refreshPage = ()=>{
+        window.location.reload();
+     }
+   
     return(
         <div className='reset'>
-            <button className='reset-button'>
+            <button onClick={refreshPage} className='reset-button'>
                 Reset
             </button>
         </div>

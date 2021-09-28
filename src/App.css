@@ -119,6 +119,32 @@ a:hover{
   text-align: center;
 }
 
+.cus-name, .cus-hp, .cus-add{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 1em 0 1em
+}
+
+.cus-name > input {
+  height:min-content;
+  width: 60%
+}
+
+.cus-hp > input{
+  height: min-content;
+  width: 40%
+}
+
+.cus-add > button{
+  line-height: 1px;
+  border-radius: 15%;
+  background-color: #3DBD00;
+  color:#1B171E;
+  border: none;
+  font-weight: bold;
+}
+
 .added-creature{
   display: flex;
   flex-wrap: wrap;
