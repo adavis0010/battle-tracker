@@ -46,19 +46,39 @@ class AddCreature extends Component {
         });
     }
 
-    subtract(num){
-        return num = num - 1;
+    changer(product, pos) {
+        let items = [...this.state.players];
+        let item = {...items[pos]}
+        item.hp = product;
+        items[pos] = item;
+        this.setState({
+            players: items
+        })
+    }
+
+    adder(num, pos){
+        num++;
+        this.changer(num, pos);
+    }
+
+    subber(num, pos){
+        num--;
+        this.changer(num, pos);
     }
 
     render(){
-
+        console.log(this.state.players);
     // ------------------------------------------------PLAYER CONTENT--------------------------------------------------------
-    let mappedPlayers =  this.state.players.map((player,index, array)=>
+    let mappedPlayers = this.state.players.map((player,index, array)=>
     {
-       return (<div key={index}>
+        let num1 = player.hp;
+
+        return (<div key={index}>
             <div className='added-creature'>
                 <h4>{player.name}</h4>
+                <button onClick={() => this.adder(num1, index)}>+</button>
                 <h2>{player.hp} HP</h2>
+                <button onClick={() => this.subber(num1, index)}>-</button>
                 <Dropdown>
                     <Dropdown.Toggle varient='success' id='options-button'>
                         ...
@@ -105,7 +125,7 @@ let mappedEnemies = this.state.enemies.map((enemy,index, array)=>
         </div>)})
 
 //--------------------------------------------------------DISPLAY------------------------------------------------------------
-let lowercase = this.state.input.toLowerCase()
+let lowercase = this.state.input.toLowerCase().replace(/\s+/g, '-');
 let playerDisplay;
 let enemyDisplay;
 
@@ -125,6 +145,8 @@ if (this.state.search&&!this.state.custom){
                 search: false,
                 container: false,
                 }, this.playerValues);
+            }).catch(function (){
+                window.alert("The Monster Manual doesn't recognize that creature.")
             });
             }}>Search</button>
         </div>
